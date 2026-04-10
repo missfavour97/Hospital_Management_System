@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescriptions</title>
+</head>
+<body>
+
+<h1>Prescriptions List</h1>
+
+<ul>
+    {% for p in prescriptions %}
+        <li>
+            {{ p.medication }} ({{ p.dosage }})  
+            for {{ p.patient.first_name }}  
+            by Dr. {{ p.doctor.first_name }}
+        </li>
+    {% empty %}
+        <li>No prescriptions available.</li>
+    {% endfor %}
+</ul>
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>

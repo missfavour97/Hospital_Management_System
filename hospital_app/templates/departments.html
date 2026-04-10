@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Departments</title>
+</head>
+<body>
+
+<h1>Departments List</h1>
+
+<ul>
+    {% for dept in departments %}
+        <li>{{ dept.name }} - {{ dept.description }}</li>
+    {% empty %}
+        <li>No departments available.</li>
+    {% endfor %}
+</ul>
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>
