@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from .models import Patient
-from .forms import PatientForm
+from django.shortcuts import render, redirect
+from .models import Patient, Doctor
+from .forms import PatientForm, DoctorForm
 
 def home(request):
     return render(request, 'home.html')
@@ -18,3 +18,17 @@ def add_patient(request):
     else:
         form = PatientForm()
     return render(request, 'add_patient.html', {'form': form})
+
+def doctor_list(request):
+    doctors = Doctor.objects.all()
+    return render(request, 'doctors.html', {'doctors': doctors})
+
+def add_doctor(request):
+    if request.method == 'POST':
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('doctor_list')
+    else:
+        form = DoctorForm()
+    return render(request, 'add_doctor.html', {'form': form})
