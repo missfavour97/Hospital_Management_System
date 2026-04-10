@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Doctor</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Add Doctor</h1>
+{% block content %}
 
-<form method="POST">
+<h2 class="mb-4">Add Doctor</h2>
+
+<form method="POST" class="card p-4 shadow-sm">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save Doctor</button>
+    <button type="submit" class="btn btn-success mt-3">Save Doctor</button>
 </form>
 
-<a href="/doctors/">Back to Doctors List</a>
+<a href="/doctors/" class="btn btn-secondary mt-3">Back</a>
 
-</body>
-</html>
+{% endblock %}

@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Department</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Add Department</h1>
+{% block content %}
 
-<form method="POST">
+<h2 class="mb-4">Add Department</h2>
+
+<form method="POST" class="card p-4 shadow-sm">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save Department</button>
+    <button type="submit" class="btn btn-success mt-3">Save Department</button>
 </form>
 
-<a href="/departments/">Back to Departments</a>
+<a href="/departments/" class="btn btn-secondary mt-3">Back</a>
 
-</body>
-</html>
+{% endblock %}

@@ -1,25 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Appointments</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Appointments List</h1>
+{% block content %}
 
-<ul>
-    {% for appointment in appointments %}
-        <li>
-            {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}
-            with Dr. {{ appointment.doctor.first_name }}
-            on {{ appointment.date }}
-        </li>
-    {% empty %}
-        <li>No appointments available.</li>
-    {% endfor %}
-</ul>
+<h2 class="mb-4">Appointments List</h2>
 
-<a href="/">Back to Home</a>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+            <td>{{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+            <td>{{ appointment.reason }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No appointments available</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-</body>
-</html>
+<a href="/" class="btn btn-secondary">Back to Home</a>
+
+{% endblock %}

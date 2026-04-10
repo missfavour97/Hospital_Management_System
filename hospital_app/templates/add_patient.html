@@ -1,46 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Add Patient</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            padding: 50px;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            width: 400px;
-            margin-top: 20px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            margin: 10px;
-        }
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Add Patient</h1>
+{% extends 'base.html' %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Patient</button>
-    </form>
-    <a href="/patients/">Back to Patients List</a>
-</body>
-</html>
+{% block content %}
+
+<h2 class="mb-4">Add Patient</h2>
+
+<form method="POST" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success mt-3">Save Patient</button>
+</form>
+
+<a href="/patients/" class="btn btn-secondary mt-3">Back</a>
+
+{% endblock %}
